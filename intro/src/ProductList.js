@@ -1,46 +1,40 @@
 import React, { Component } from 'react'
-import { ListGroup,ListGroupItem } from 'reactstrap'
+import { ListGroup, ListGroupItem, Table, Button } from 'reactstrap'
 
 export default class ProductList extends Component {
+
   render() {
     return (
       <div>
-                <h3>{this.props.info.title}</h3>
-                <h4>{this.props.info.baskabisey}</h4>
+        <h3>{this.props.info.title}</h3>
+        <Table hover>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Product Name</th>
+              <th>Unit Price</th>
+              <th>Quantity Per Unit</th>
+              <th>Units In Stock </th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              this.props.products.map(product => (
+                <tr key={product.id}>
+                  <th scope="row">{product.id}</th>
+                  <td>{product.productName}</td>
+                  <td>{product.unitPrice}</td>
+                  <td>{product.quantityPerUnit}</td>
+                  <td>{product.unitsInStock}</td>
+                  <td><Button onClick={()=>this.props.addToCart(product)} color="info">add to cart</Button>
+                  </td>
+                </tr>
+              ))}
+          </tbody>
+        </Table>
 
-        <ListGroup flush>
-      <ListGroupItem
-        disabled
-        href="#"
-        tag="a"
-      >
-        Cras justo odio
-      </ListGroupItem>
-      <ListGroupItem
-        href="#"
-        tag="a"
-      >
-        Dapibus ac facilisis in
-      </ListGroupItem>
-      <ListGroupItem
-        href="#"
-        tag="a"
-      >
-        Morbi leo risus
-      </ListGroupItem>
-      <ListGroupItem
-        href="#"
-        tag="a"
-      >
-        Porta ac consectetur ac
-      </ListGroupItem>
-      <ListGroupItem
-        href="#"
-        tag="a"
-      >
-        Vestibulum at eros
-      </ListGroupItem>
-    </ListGroup></div>
+      </div>
     )
   }
 }
