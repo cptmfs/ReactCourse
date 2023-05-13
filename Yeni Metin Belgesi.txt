@@ -165,4 +165,21 @@ One of the optimal ways to form the networks is to use the third and fourth comp
 
 
 
+int networkCount = 0;
+        int computerCount = 0;
+        long totalSpeed = 0;
 
+        foreach (int s in speed)
+        {
+            computerCount++;
+            totalSpeed += s;
+
+            if (computerCount >= minComps && totalSpeed >= speedThreshold)
+            {
+                networkCount++;
+                computerCount = 0;
+                totalSpeed = 0;
+            }
+        }
+
+        return networkCount;
