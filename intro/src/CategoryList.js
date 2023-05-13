@@ -1,32 +1,32 @@
 import React, { Component } from 'react'
-import { ListGroup,ListGroupItem } from 'reactstrap'
+import { ListGroup, ListGroupItem } from 'reactstrap'
 
-export default class 
- extends Component {
-  constructor(props){
-    super(props)
+export default class CategoryList extends Component {
+  state = {
+    categories: []
+  };
+  componentDidMount(){
+    this.getCategories();
   }
+
+
+  getCategories = ()=>{
+    fetch("http://localhost:3000/categories")
+    .then(response=>response.json())
+    .then(response=>this.setState({categories:response}));
+  }
+
   render() {
     return (
       <div>
         <h3>{this.props.info.title}</h3>
         <ListGroup>
-                <ListGroupItem>
-                  C
-                </ListGroupItem>
-                <ListGroupItem>
-                  Asp.NetMVC
-                </ListGroupItem>
-                <ListGroupItem>
-                  Java
-                </ListGroupItem>
-                <ListGroupItem>
-                  React
-                </ListGroupItem>
-                <ListGroupItem>
-                  EntityFramework
-                </ListGroupItem>
-      </ListGroup>
+          {
+            this.state.categories.map(category => (
+              <ListGroupItem active={category.categoryName===this.props.currentCategory?true:false} onClick={() => this.props.changeCategory(category)} key={category.categoryId}> {category.categoryName} </ListGroupItem>
+            ))}
+        </ListGroup>
+        {/* <h4>{this.props.currentCategory}</h4> */}
       </div>
     )
   }
