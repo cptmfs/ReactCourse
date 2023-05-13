@@ -139,3 +139,30 @@ Constraints
  
 
 
+Sample Input For Custom Testing
+
+STDIN      Function
+-----      --------
+7      →   n = 7
+3      →   speed = [3, 3, 2, 5, 3, 2, 4]
+3
+2
+5
+3
+2
+4
+2      →   minComps = 2 
+7      →   speedThreshold = 7
+Sample Output
+
+2
+Explanation
+
+ 
+
+One of the optimal ways to form the networks is to use the third and fourth computers to form the first network, and the last three computers to form the second network. Both the networks have at least minComps = 2 computers in them and a total processing speed of (2+5) = 7 and (3+2+4) = 9, which are not below the threshold value.
+
+
+
+
+
