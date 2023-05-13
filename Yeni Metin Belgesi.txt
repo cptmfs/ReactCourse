@@ -1,0 +1,92 @@
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+
+namespace Solution
+{
+    abstract class Computer 
+    {
+        string type,model,cpu;
+        bool isTurnedOn=false;
+        public Computer(string type, string model, string cpu){
+            this.type=type;
+            this.model=model;
+            this.cpu=cpu;
+        }
+        
+        public string GetComputerModel(){
+        return model;
+    }
+    public string GetComputerCpu(){
+        return cpu;
+    }
+    public string GetComputerStatus(){
+        return isTurnedOn;
+    }
+    public void SwitchComputerStatus(){
+        isTurnedOn=true;
+    }
+    }
+    class PersonalComputer() {}
+    class Notebook {}
+    
+    
+    
+    
+    
+
+    class Solution
+    {
+        static void Main()
+        {
+            Type baseType = typeof(Computer);
+            if (!baseType.IsAbstract)
+                throw new Exception($"{baseType.Name} type should be abstract");
+            
+            string str = Console.ReadLine();
+            string[] strArr = str.Split(' ');
+            Computer personalComputer = new PersonalComputer(strArr[0], strArr[1]);
+            
+            var computerType = personalComputer.GetComputerType();
+            var computerModel = personalComputer.GetComputerModel();
+            var computerCPU = personalComputer.GetComputerCpu();
+            var computerStatus = personalComputer.GetComputerStatus() ? "on": "off";
+            
+            Console.WriteLine($"PersonalComputer info: type - {computerType}, model - {computerModel}, CPU - {computerCPU}");
+            Console.WriteLine($"PersonalComputer is turned {computerStatus}");
+            
+            Console.WriteLine("Switching");
+            personalComputer.SwitchComputerStatus();
+            computerStatus = personalComputer.GetComputerStatus() ? "on": "off";
+            Console.WriteLine($"PersonalComputer is turned {computerStatus}");
+            
+            Console.WriteLine("Switching");
+            personalComputer.SwitchComputerStatus();
+            computerStatus = personalComputer.GetComputerStatus() ? "on": "off";
+            Console.WriteLine($"PersonalComputer is turned {computerStatus}");
+                
+            str = Console.ReadLine();
+            strArr = str.Split(' ');
+            Computer notebook = new Notebook(strArr[0], strArr[1]);
+            
+            computerType = notebook.GetComputerType();
+            computerModel = notebook.GetComputerModel();
+            computerCPU = notebook.GetComputerCpu();
+            computerStatus = notebook.GetComputerStatus() ? "on": "off";
+            
+            Console.WriteLine($"Notebook info: type - {computerType}, model - {computerModel}, CPU - {computerCPU}");
+            Console.WriteLine($"Notebook is turned {computerStatus}");
+            
+            Console.WriteLine("Switching");
+            notebook.SwitchComputerStatus();
+            computerStatus = notebook.GetComputerStatus() ? "on": "off";
+            Console.WriteLine($"Notebook is turned {computerStatus}");
+            
+            Console.WriteLine("Switching");
+            notebook.SwitchComputerStatus();
+            computerStatus = notebook.GetComputerStatus() ? "on": "off";
+            Console.WriteLine($"Notebook is turned {computerStatus}");
+        }
+    }
+}
