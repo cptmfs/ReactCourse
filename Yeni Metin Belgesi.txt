@@ -1,92 +1,64 @@
-using System;
+using System.CodeDom.Compiler;
 using System.Collections.Generic;
+using System.Collections;
+using System.ComponentModel;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 using System.IO;
 using System.Linq;
+using System.Reflection;
+using System.Runtime.Serialization;
+using System.Text.RegularExpressions;
+using System.Text;
+using System;
 
-namespace Solution
+
+
+class Result
 {
-    abstract class Computer 
-    {
-        string type,model,cpu;
-        bool isTurnedOn=false;
-        public Computer(string type, string model, string cpu){
-            this.type=type;
-            this.model=model;
-            this.cpu=cpu;
-        }
-        
-        public string GetComputerModel(){
-        return model;
-    }
-    public string GetComputerCpu(){
-        return cpu;
-    }
-    public string GetComputerStatus(){
-        return isTurnedOn;
-    }
-    public void SwitchComputerStatus(){
-        isTurnedOn=true;
-    }
-    }
-    class PersonalComputer() {}
-    class Notebook {}
-    
-    
-    
-    
-    
 
-    class Solution
+    /*
+     * Complete the 'maximumNetworks' function below.
+     *
+     * The function is expected to return an INTEGER.
+     * The function accepts following parameters:
+     *  1. INTEGER_ARRAY speed
+     *  2. INTEGER minComps
+     *  3. LONG_INTEGER speedThreshold
+     */
+
+    public static int maximumNetworks(List<int> speed, int minComps, long speedThreshold)
     {
-        static void Main()
+
+    }
+
+}
+
+class Solution
+{
+    public static void Main(string[] args)
+    {
+        TextWriter textWriter = new StreamWriter(@System.Environment.GetEnvironmentVariable("OUTPUT_PATH"), true);
+
+        int speedCount = Convert.ToInt32(Console.ReadLine().Trim());
+
+        List<int> speed = new List<int>();
+
+        for (int i = 0; i < speedCount; i++)
         {
-            Type baseType = typeof(Computer);
-            if (!baseType.IsAbstract)
-                throw new Exception($"{baseType.Name} type should be abstract");
-            
-            string str = Console.ReadLine();
-            string[] strArr = str.Split(' ');
-            Computer personalComputer = new PersonalComputer(strArr[0], strArr[1]);
-            
-            var computerType = personalComputer.GetComputerType();
-            var computerModel = personalComputer.GetComputerModel();
-            var computerCPU = personalComputer.GetComputerCpu();
-            var computerStatus = personalComputer.GetComputerStatus() ? "on": "off";
-            
-            Console.WriteLine($"PersonalComputer info: type - {computerType}, model - {computerModel}, CPU - {computerCPU}");
-            Console.WriteLine($"PersonalComputer is turned {computerStatus}");
-            
-            Console.WriteLine("Switching");
-            personalComputer.SwitchComputerStatus();
-            computerStatus = personalComputer.GetComputerStatus() ? "on": "off";
-            Console.WriteLine($"PersonalComputer is turned {computerStatus}");
-            
-            Console.WriteLine("Switching");
-            personalComputer.SwitchComputerStatus();
-            computerStatus = personalComputer.GetComputerStatus() ? "on": "off";
-            Console.WriteLine($"PersonalComputer is turned {computerStatus}");
-                
-            str = Console.ReadLine();
-            strArr = str.Split(' ');
-            Computer notebook = new Notebook(strArr[0], strArr[1]);
-            
-            computerType = notebook.GetComputerType();
-            computerModel = notebook.GetComputerModel();
-            computerCPU = notebook.GetComputerCpu();
-            computerStatus = notebook.GetComputerStatus() ? "on": "off";
-            
-            Console.WriteLine($"Notebook info: type - {computerType}, model - {computerModel}, CPU - {computerCPU}");
-            Console.WriteLine($"Notebook is turned {computerStatus}");
-            
-            Console.WriteLine("Switching");
-            notebook.SwitchComputerStatus();
-            computerStatus = notebook.GetComputerStatus() ? "on": "off";
-            Console.WriteLine($"Notebook is turned {computerStatus}");
-            
-            Console.WriteLine("Switching");
-            notebook.SwitchComputerStatus();
-            computerStatus = notebook.GetComputerStatus() ? "on": "off";
-            Console.WriteLine($"Notebook is turned {computerStatus}");
+            int speedItem = Convert.ToInt32(Console.ReadLine().Trim());
+            speed.Add(speedItem);
         }
+
+        int minComps = Convert.ToInt32(Console.ReadLine().Trim());
+
+        long speedThreshold = Convert.ToInt64(Console.ReadLine().Trim());
+
+        int result = Result.maximumNetworks(speed, minComps, speedThreshold);
+
+        textWriter.WriteLine(result);
+
+        textWriter.Flush();
+        textWriter.Close();
     }
 }
