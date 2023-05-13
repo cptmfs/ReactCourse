@@ -183,3 +183,14 @@ int networkCount = 0;
         }
 
         return networkCount;
+
+
+
+
+The first line contains an integer, n, the size of speed.
+
+Each of the next i lines contains an integer, speed[i].
+
+The next line contains an integer, minComps.
+
+The next line contains an integer, speedThreshold.
