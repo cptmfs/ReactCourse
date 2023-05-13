@@ -62,3 +62,80 @@ class Solution
         textWriter.Close();
     }
 }
+
+
+
+2. Network Formation
+A software development company is working to create several shared computing systems throughout an office.
+
+ 
+
+For computers to be on the same network, there are the following constraints:
+
+They must be adjacent to one another.
+There must be a minimum number of computers.
+The total processing speed of the network (the sum of each computer's processing speed) must be at least a certain threshold.
+A computer can only belong to one network.
+ 
+
+Given the processing speeds and order of the computers, as well as the network constraints, determine the maximum number of networks that can be formed.
+
+ 
+
+Example
+
+n = 6
+
+speed = [5, 7, 9, 12, 10, 13]
+
+minComps = 2 
+
+speedThreshold = 15
+
+ 
+
+There are n = 6 computers. Each network needs to have a minimum of minComps = 2 computers and a total processing speed of at least speedThreshold = 15.
+
+The first network includes the second, third, and fourth computers, which results in a total processing speed of 7+9+12 = 28. This is above the threshold of 15.
+The second network includes the fifth and sixth computers, with a total processing speed of 10+13 = 23.
+ 
+
+The maximum number of networks that can be formed is 2.
+
+ 
+
+Function Description
+
+Complete the function maximumNetworks in the editor.
+
+ 
+
+maximumNetworks has the following parameter(s):
+
+    int speed[n]:  speed[i] denotes the processing speed of the ith computer
+
+    int minComps: the minimum number of computers each network must have
+
+    long speedThreshold: the minimum total processing speed a network must have
+
+ 
+
+Returns
+
+    int: the maximum number of networks that can be formed from the computers
+
+ 
+
+Constraints
+
+1 ≤ n ≤ 105
+
+1 ≤ speed[i] ≤ 109
+
+1 ≤ minComps ≤ n
+
+1 ≤ speedThreshold ≤ 1014
+
+ 
+
+
