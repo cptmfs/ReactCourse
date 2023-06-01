@@ -8,7 +8,7 @@ import alertify from "alertifyjs";
 class CartDetail extends Component {
     removeFromCart(product){
         this.props.actions.removeFromCart(product);
-        alertify.error(product.productName+ " sepetten silindi");
+        alertify.error(product.productName+ " sepetten silindi")
 
     }
     render() {

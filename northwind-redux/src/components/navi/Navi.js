@@ -10,7 +10,7 @@ import {
   NavbarText,
 } from 'reactstrap';
 import CartSummary from '../cart/CartSummary';
-
+import { Link } from "react-router-dom"
 function Example(args) {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -19,19 +19,16 @@ function Example(args) {
   return (
     <div>
       <Navbar color='light' light expand="md" {...args}>
-        <NavbarBrand href="/">reactstrap</NavbarBrand>
+        <NavbarBrand><Link to="/">Northwind Magazası</Link></NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="me-auto" navbar>
             <NavItem>
-              <NavLink href="/components/">Components</NavLink>
+              <NavLink>
+                <Link to="/saveProduct">Save Product</Link>
+                </NavLink>
             </NavItem>
-            <NavItem>
-              <NavLink href="https://github.com/reactstrap/reactstrap">
-                GitHub
-              </NavLink>
-            </NavItem>
-            <CartSummary/>
+            <CartSummary />
           </Nav>
           <NavbarText>Simple Text</NavbarText>
         </Collapse>
